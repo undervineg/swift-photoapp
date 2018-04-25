@@ -20,7 +20,8 @@ class VideoMaker {
         self.settings = [
             AVVideoCodecKey: AVVideoCodecType.h264,
             AVVideoWidthKey: Int(videoSize.width),
-            AVVideoHeightKey: Int(videoSize.height)
+            AVVideoHeightKey: Int(videoSize.height),
+            AVVideoScalingModeKey: AVVideoScalingModeResize
         ]
         self.writerInput = AVAssetWriterInput(mediaType: AVMediaType.video, outputSettings: settings)
         writer.add(writerInput)
@@ -35,7 +36,7 @@ class VideoMaker {
         return saveURL
     }
     
-    func makeVideo(from images: [UIImage], duration: Int, _ completion: @escaping (URL)->(Void)) {
+    func makeVideo(from images: [UIImage?], duration: Int, _ completion: @escaping (URL)->(Void)) {
         writer.startWriting()
         writer.startSession(atSourceTime: kCMTimeZero)
         let frameTime = CMTime(value: CMTimeValue(duration), timescale: Int32(images.count))
@@ -51,7 +52,7 @@ class VideoMaker {
                     break
                 }
 
-                if let buffer = self.samplePixelBuffer(from: images[i]) {
+                if let image = images[i], let buffer = self.samplePixelBuffer(from: image) {
                     if i == 0 {
                         self.pixelBufferAdapter.append(buffer, withPresentationTime: kCMTimeZero)
                     } else {
@@ -77,8 +78,8 @@ class VideoMaker {
         let context = CGContext(data: pixelData, width: videoWidth, height: videoHeight,
                                 bitsPerComponent: 8, bytesPerRow: CVPixelBufferGetBytesPerRow(resultBuffer!),
                                 space: CGColorSpaceCreateDeviceRGB(), bitmapInfo: CGImageAlphaInfo.noneSkipFirst.rawValue)
-        context?.concatenate(.identity)
-        context?.draw(image, in: CGRect(x: 0, y: 0, width: videoWidth, height: videoHeight))
+        let yCenter = (videoHeight-image.height)/2
+        context?.draw(image, in: CGRect(x: 0, y: yCenter, width: image.width, height: image.height))
         
         CVPixelBufferUnlockBaseAddress(resultBuffer!, .init(rawValue: 0))
         

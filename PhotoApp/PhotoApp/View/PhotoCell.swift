@@ -19,7 +19,6 @@ class PhotoCell: UICollectionViewCell, Reusable {
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        photoImageView.backgroundColor = UIColor.clear
         selectedBackgroundView = UIView.init(frame: self.bounds)
         self.addSubview(selectedBackgroundView!)
     }

@@ -166,3 +166,82 @@ private func updateChangedItems(_ changes: PHFetchResultChangeDetails<PHAsset>) 
 2018-04-17 (작업시간: 1일)
 
 <br/>
+
+## 이미지 여러 장으로 3초짜리 동영상 만들기
+<img src="img/photoapp_step3_1.jpeg" width="40%"></img>
+<img src="img/photoapp_step3_2.jpeg" width="40%"></img>
+<img src="img/photoapp_step3_3.jpeg" width="40%"></img>
+<img src="img/photoapp_step3_4.jpeg" width="40%"></img>
+
+### 라이브 포토 아이콘 표시
+- 라이브포토 이미지를 표시할 UIImageView 요소를 cell에 추가
+- 오토레이아웃은 코드로 추가: 셀의 우상단에 1/4 크기로 붙임
+
+```swift
+@IBOutlet weak var liveBadgeImageView: UIImageView! {
+    didSet {
+        liveBadgeImageView.translatesAutoresizingMaskIntoConstraints = false
+        liveBadgeImageView.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.25).isActive = true
+        liveBadgeImageView.heightAnchor.constraint(equalTo: self.heightAnchor, multiplier: 0.25).isActive = true
+        liveBadgeImageView.trailingAnchor.constraint(equalTo: self.trailingAnchor).isActive = true
+        liveBadgeImageView.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
+    }
+}
+```
+
+- asset의 mediaSubTypes 중 .photoLive 서브타입이 있는지 확인할 수 있는 프로퍼티 익스텐션 추가
+
+```swift
+extension PHAsset {
+    var isLivePhoto: Bool {
+        return self.mediaSubtypes.contains(.photoLive)
+    }
+}
+```
+
+- requestImage() 시, 라이브포토 여부도 클로저의 인자로 전달하여 컬렉션뷰 셀 표시 시 라이브포토인 경우 아이콘 표시
+- 라이브포토 표시는 `PHLivePhotoView.livePhotoBadgeImage(options:)` 사용
+
+```swift
+func requestImage(at index: Int, _ completion: @escaping (UIImage?, Bool) -> (Void)) {
+    imageManager.requestImage(for: photos.at(index),
+                              targetSize: ViewConfig.itemSize,
+                              contentMode: PHImageContentMode.aspectFill,
+                              options: nil) { image, _ in completion(image, self.photos.at(index).isLivePhoto) }
+}
+
+func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+	...
+	photoService.requestImage(at: indexPath.item) { image, isLivePhoto  in
+	    cell.photoImageView.image = image
+	    cell.liveBadgeImageView.image = isLivePhoto ? PHLivePhotoView.livePhotoBadgeImage(options: .overContent) : nil
+	}
+	...
+}
+```
+
+### 셀 다중 선택 및 Done 버튼 활성화
+#### 선택된 셀의 테두리를 빨간색으로 표시
+- UICollectionViewCell를 상속받는 뷰에 isSelected를 오버라이드 하여 셀이 선택될 때는 빨간색, 선택 해제되면 무색으로 변경되도록 구현
+
+```swift
+override var isSelected: Bool {
+    didSet {
+        selectedBackgroundView?.layer.borderWidth = 5
+        selectedBackgroundView?.layer.borderColor = isSelected ? UIColor.red.cgColor : UIColor.clear.cgColor
+    }
+}
+```
+
+- 이 때, 테두리를 selectedBackgroundView 프로퍼티에 적용하는데, 
+
+#### 셀 3개 이상 선택 시 Done 버튼 활성화
+#### Done 버튼 클릭 시, 3초 길이 비디오로 만들어 사진보관함에 저장
+
+### 학습 내용
+>- **[UICollectionView 셀의 구성]()**
+>- **[AVFoundation 라이브러리의 구성]()**
+
+2018-04-24 (작업시간: 2일)
+
+<br/>

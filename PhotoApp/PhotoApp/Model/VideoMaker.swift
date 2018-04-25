@@ -13,10 +13,9 @@ class VideoMaker {
     private let writer: AVAssetWriter
     private let writerInput: AVAssetWriterInput
     private let pixelBufferAdapter: AVAssetWriterInputPixelBufferAdaptor
-    private let playSeconds: Int
     private var settings: [String: Any] = [:]
 
-    init(videoSize: CGSize, playSeconds: Int) throws {
+    init(videoSize: CGSize) throws {
         self.writer = try AVAssetWriter(url: VideoMaker.generateFilePath(), fileType: AVFileType.mov)
         self.settings = [
             AVVideoCodecKey: AVVideoCodecType.h264,
@@ -27,7 +26,6 @@ class VideoMaker {
         writer.add(writerInput)
         self.pixelBufferAdapter = AVAssetWriterInputPixelBufferAdaptor(assetWriterInput: writerInput,
                                                                        sourcePixelBufferAttributes: nil)
-        self.playSeconds = playSeconds
     }
     
     static func generateFilePath() throws -> URL {
@@ -37,10 +35,10 @@ class VideoMaker {
         return saveURL
     }
     
-    func makeVideo(from images: [UIImage], _ completion: @escaping (URL)->(Void)) {
+    func makeVideo(from images: [UIImage], duration: Int, _ completion: @escaping (URL)->(Void)) {
         writer.startWriting()
         writer.startSession(atSourceTime: kCMTimeZero)
-        let frameTime = CMTime(value: CMTimeValue(self.playSeconds), timescale: Int32(images.count))
+        let frameTime = CMTime(value: CMTimeValue(duration), timescale: Int32(images.count))
         let mediaQueue = DispatchQueue(label: "mediaQueue")
         var i = 0
         self.writerInput.requestMediaDataWhenReady(on: mediaQueue) { [self = self] in

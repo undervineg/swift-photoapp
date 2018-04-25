@@ -233,10 +233,90 @@ override var isSelected: Bool {
 }
 ```
 
-- 이 때, 테두리를 selectedBackgroundView 프로퍼티에 적용하는데, 
+- 테두리는 selectedBackgroundView 프로퍼티에 적용하는데, selectedBackgroundView는 cell에 이미 붙어있는 상태는 아니기 때문에 새 UIView로 초기화 한 후, 현재 cell에 붙여줘야 한다.
+
+```swift
+override func awakeFromNib() {
+    super.awakeFromNib()
+    selectedBackgroundView = UIView.init(frame: self.bounds)
+    self.addSubview(selectedBackgroundView!)
+}
+```
 
 #### 셀 3개 이상 선택 시 Done 버튼 활성화
+- 컬렉션뷰의 `allowsMultipleSelection`를 true로 설정하여 여러 셀을 선택할 수 있도록 한다.
+- Done 버튼의 `isEnabled`를 사용하여 활성화/비활성화를 설정한다.
+
 #### Done 버튼 클릭 시, 3초 길이 비디오로 만들어 사진보관함에 저장
+- 선택된 사진들의 PHAsset 배열을 UIImage로 변환한 후, AVAssetWriter를 사용
+	- 이미지 변환 시, 해상도를 위해 fullSize를 가져옴
+	- 이미지가 잘리거나 늘어나지 않고 비율에 맞춰 보여질 수 있도록 사이즈를 targetSize 비율에 맞춰 변경하였다.
+	- 배열로 넘어온 assets를 비동기로 받기 위해 DispatchGroup을 사용. 모든 assets를 image로 변경하고나면 global 큐에서 비디오를 생성하도록 구현
+
+```swift
+func requestImages(from assets: [PHAsset], targetSize: CGSize, _ completion: @escaping ([UIImage?]) -> (Void)) {
+    var downloadedImages: [UIImage?] = []
+    let myGroup = DispatchGroup()
+    assets.forEach { asset in
+        myGroup.enter()
+        self.imageManager.requestImageData(for: asset, options: nil, resultHandler: { (data, _, _, _) in
+            if let data = data, let fullImage = UIImage(data: data) {
+                let resizedImage = fullImage.resizedImage(fullImage.size.newSize(fitTo: targetSize))
+                downloadedImages.append(resizedImage)
+                myGroup.leave()
+            }
+        })
+    }
+    myGroup.notify(queue: .global()) {
+        completion(downloadedImages)
+    }
+}
+```
+
+- AVAssetWriter는 startWriting, startSession, finishWriting 시 사용
+- 실제로 미디어데이터를 쓰는 객체는 AVAssetWriterInput이다. (output 파일에 쓸 개별 track에 사용)
+- AVAssetWriterInput 객체는 isReadyForMoreMediaData 프로퍼티가 true인 동안에만 쓸 수 있다.
+- 비동기로 이미지를 받을 때는 isReadyForMoreMediaData가 특정 시점에 false가 되기 때문에 for문으로 배열의 원소를 접근하는 방식을 쓰면 누락되는 이미지가 있을 수 있다. 따라서 while 문을 사용하여 프레임 인덱스는 직접 증가시키는 방식을 사용
+- AVAssetWriterInput 객체는 CMSampleBuffer 타입으로 데이터를 받는데, 만약 CVPixelBuffer 객체를 붙이고 싶다면 AVAssetWriterInputPixelBufferAdapter 클래스를 사용해야 한다.
+- 이미지를 붙이는 작업이므로 CVPixelBuffer를 사용하였다.
+
+```swift
+var i = 0
+self.writerInput.requestMediaDataWhenReady(on: mediaQueue) { [self = self] in
+    while self.writerInput.isReadyForMoreMediaData {
+        if i >= images.count {
+            self.writerInput.markAsFinished()
+            self.writer.finishWriting {
+                completion(self.writer.outputURL)
+            }
+            break
+        }
+
+        if let image = images[i], let buffer = self.samplePixelBuffer(from: image) {
+            if i == 0 {
+                self.pixelBufferAdapter.append(buffer, withPresentationTime: kCMTimeZero)
+            } else {
+                let currPresentTime = CMTimeMultiply(frameTime, Int32(i))
+                self.pixelBufferAdapter.append(buffer, withPresentationTime: currPresentTime)
+            }
+            i += 1
+        }
+    }
+}
+```
+
+- 한 장의 이미지를 통해 한 개의 픽셀버퍼를 만들 때
+- 비디오사이즈 위에 이미지 사이즈만큼 그리고, 세로 중앙정렬하였다.
+- 세로중앙정렬 시, context의 origin은 좌상단이 아닌 좌하단에 위치하므로 주의해야 한다.
+
+```swift
+let pixelData = CVPixelBufferGetBaseAddress(resultBuffer!)
+let context = CGContext(data: pixelData, width: videoWidth, height: videoHeight,
+                        bitsPerComponent: 8, bytesPerRow: CVPixelBufferGetBytesPerRow(resultBuffer!),
+                        space: CGColorSpaceCreateDeviceRGB(), bitmapInfo: CGImageAlphaInfo.noneSkipFirst.rawValue)
+let yCenter = (videoHeight-image.height)/2
+context?.draw(image, in: CGRect(x: 0, y: yCenter, width: image.width, height: image.height))
+```
 
 ### 학습 내용
 >- **[UICollectionView 셀의 구성]()**

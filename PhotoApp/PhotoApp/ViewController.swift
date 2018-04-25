@@ -41,7 +41,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PhotoCell.id, for: indexPath) as! PhotoCell
         cell.representedAssetIdentifier = photoService.at(indexPath.item).localIdentifier
-        photoService.requestImage(at: indexPath.item) { image, isLivePhoto  in
+        photoService.requestImage(at: indexPath.item, targetSize: ViewConfig.thumbnailSize) { image, isLivePhoto  in
             cell.photoImageView.image = image
             cell.liveBadgeImageView.image = isLivePhoto ? PHLivePhotoView.livePhotoBadgeImage(options: .overContent) : nil
         }
@@ -49,7 +49,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return ViewConfig.itemSize
+        return ViewConfig.thumbnailSize
     }
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
@@ -63,13 +63,17 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     }
 
     @IBAction func isDone(_ sender: UIBarButtonItem) {
-        let selectedImages = photoService.requestImages(from: selectedItems)
-        let videoMaker = try? VideoMaker(videoSize: ViewConfig.itemSize, playSeconds: 3)
-        videoMaker?.makeVideo(from: selectedImages) { videoUrl in
+        let selectedImages = photoService.requestImages(from: selectedItems, targetSize: ViewConfig.contentSize)
+        let videoMaker = try? VideoMaker(videoSize: ViewConfig.videoSize)
+        let playDuration = 3
+        videoMaker?.makeVideo(from: selectedImages, duration: playDuration) { videoUrl in
             PHPhotoLibrary.shared().performChanges({
                 PHAssetChangeRequest.creationRequestForAssetFromVideo(atFileURL: videoUrl)
             }, completionHandler: { (isSaved, error) in
-                isSaved ? self.showOKAlert("3초 동영상이 추가되었습니다.") : nil
+                isSaved ? self.showOKAlert("\(playDuration)초 동영상이 추가되었습니다.") : nil
+                if error != nil {
+                    print(error)
+                }
             })
         }
     }

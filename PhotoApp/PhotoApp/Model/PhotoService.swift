@@ -34,19 +34,19 @@ class PhotoService: NSObject, PHPhotoLibraryChangeObserver {
                                         userInfo: [NotificationKeys.photoChanges: changes])
     }
 
-    func requestImage(at index: Int, _ completion: @escaping (UIImage?, Bool) -> (Void)) {
+    func requestImage(at index: Int, targetSize: CGSize, _ completion: @escaping (UIImage?, Bool) -> (Void)) {
         imageManager.requestImage(for: photos.at(index),
-                                  targetSize: ViewConfig.itemSize,
+                                  targetSize: targetSize,
                                   contentMode: PHImageContentMode.aspectFill,
                                   options: nil) { image, _ in completion(image, self.photos.at(index).isLivePhoto) }
     }
 
-    func requestImages(from assets: [PHAsset]) -> [UIImage] {
+    func requestImages(from assets: [PHAsset], targetSize: CGSize) -> [UIImage] {
         var images: [UIImage] = []
         assets.forEach {
             imageManager.requestImage(for: $0,
-                                      targetSize: ViewConfig.itemSize,
-                                      contentMode: PHImageContentMode.aspectFill,
+                                      targetSize: targetSize,
+                                      contentMode: PHImageContentMode.aspectFit,
                                       options: nil) { image, _ in
                                         if let image = image {
                                             images.append(image)

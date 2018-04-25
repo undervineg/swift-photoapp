@@ -9,5 +9,7 @@
 import UIKit
 
 struct ViewConfig {
-    static let itemSize: CGSize = CGSize(width: 100, height: 100)
+    static let thumbnailSize: CGSize = CGSize(width: 100, height: 100)
+    static let contentSize: CGSize = CGSize.init(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
+    static let videoSize: CGSize = CGSize.init(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.width)
 }

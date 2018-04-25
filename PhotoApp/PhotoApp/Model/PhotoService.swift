@@ -41,22 +41,45 @@ class PhotoService: NSObject, PHPhotoLibraryChangeObserver {
                                   options: nil) { image, _ in completion(image, self.photos.at(index).isLivePhoto) }
     }
 
-    func requestImages(from assets: [PHAsset], targetSize: CGSize) -> [UIImage] {
-        var images: [UIImage] = []
-        assets.forEach {
-            imageManager.requestImage(for: $0,
-                                      targetSize: targetSize,
-                                      contentMode: PHImageContentMode.aspectFit,
-                                      options: nil) { image, _ in
-                                        if let image = image {
-                                            images.append(image)
-                                        }
-            }
+    func requestImages(from assets: [PHAsset], targetSize: CGSize, _ completion: @escaping ([UIImage?]) -> (Void)) {
+        var downloadedImages: [UIImage?] = []
+        let myGroup = DispatchGroup()
+        assets.forEach { asset in
+            myGroup.enter()
+            self.imageManager.requestImageData(for: asset, options: nil, resultHandler: { (data, _, _, _) in
+                if let data = data, let fullImage = UIImage(data: data) {
+                    let resizedImage = fullImage.resizedImage(fullImage.size.newSize(fitTo: targetSize))
+                    downloadedImages.append(resizedImage)
+                    myGroup.leave()
+                }
+            })
         }
-        return images
+        myGroup.notify(queue: .global()) {
+            completion(downloadedImages)
+        }
     }
 
     deinit {
         PHPhotoLibrary.shared().unregisterChangeObserver(self)
+    }
+}
+
+extension CGSize {
+    func newSize(fitTo targetSize: CGSize) -> CGSize {
+        let widthRatio = targetSize.width / self.width
+        let heightRatio = targetSize.height / self.height
+
+        let applyRatio = widthRatio > heightRatio ? heightRatio : widthRatio
+        return CGSize.init(width: self.width*applyRatio, height: self.height*applyRatio)
+    }
+}
+
+extension UIImage {
+    func resizedImage(_ targetSize: CGSize) -> UIImage? {
+        UIGraphicsBeginImageContext(targetSize)
+        self.draw(in: CGRect(origin: .zero, size: targetSize))
+        let resizedImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        return resizedImage
     }
 }

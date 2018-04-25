@@ -40,10 +40,13 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PhotoCell.id, for: indexPath) as! PhotoCell
-        cell.representedAssetIdentifier = photoService.at(indexPath.item).localIdentifier
+        let asset = photoService.at(indexPath.item)
+        cell.representedAssetIdentifier = asset.localIdentifier
         photoService.requestImage(at: indexPath.item, targetSize: ViewConfig.thumbnailSize) { image, isLivePhoto  in
-            cell.photoImageView.image = image
-            cell.liveBadgeImageView.image = isLivePhoto ? PHLivePhotoView.livePhotoBadgeImage(options: .overContent) : nil
+            if cell.representedAssetIdentifier == asset.localIdentifier {
+                cell.photoImageView.image = image
+                cell.liveBadgeImageView.image = isLivePhoto ? PHLivePhotoView.livePhotoBadgeImage(options: .overContent) : nil
+            }
         }
         return cell
     }
@@ -63,7 +66,12 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     }
 
     @IBAction func isDone(_ sender: UIBarButtonItem) {
-        let selectedImages = photoService.requestImages(from: selectedItems, targetSize: ViewConfig.contentSize)
+        photoService.requestImages(from: selectedItems, targetSize: ViewConfig.videoSize) {
+            self.startMakingVideo($0)
+        }
+    }
+
+    private func startMakingVideo(_ selectedImages: [UIImage?]) {
         let videoMaker = try? VideoMaker(videoSize: ViewConfig.videoSize)
         let playDuration = 3
         videoMaker?.makeVideo(from: selectedImages, duration: playDuration) { videoUrl in
@@ -71,9 +79,6 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
                 PHAssetChangeRequest.creationRequestForAssetFromVideo(atFileURL: videoUrl)
             }, completionHandler: { (isSaved, error) in
                 isSaved ? self.showOKAlert("\(playDuration)초 동영상이 추가되었습니다.") : nil
-                if error != nil {
-                    print(error)
-                }
             })
         }
     }

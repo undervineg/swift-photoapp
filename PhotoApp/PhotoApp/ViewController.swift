@@ -31,6 +31,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         NotificationCenter.default.addObserver(self, selector: #selector(updateCollectionView(notification:)),
                                                name: .photoLibraryChanged, object: nil)
         collectionView.allowsMultipleSelection = true
+        doneButton.isEnabled = false
     }
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {

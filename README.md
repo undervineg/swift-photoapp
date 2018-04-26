@@ -249,29 +249,37 @@ override func awakeFromNib() {
 
 #### Done 버튼 클릭 시, 3초 길이 비디오로 만들어 사진보관함에 저장
 - 선택된 사진들의 PHAsset 배열을 UIImage로 변환한 후, AVAssetWriter를 사용
-	- 이미지 변환 시, 해상도를 위해 fullSize를 가져옴
-	- 이미지가 잘리거나 늘어나지 않고 비율에 맞춰 보여질 수 있도록 사이즈를 targetSize 비율에 맞춰 변경하였다.
-	- 배열로 넘어온 assets를 비동기로 받기 위해 DispatchGroup을 사용. 모든 assets를 image로 변경하고나면 global 큐에서 비디오를 생성하도록 구현
+- [문제봉착!] 이미지 변환 시, 해상도 문제
+	- 착각: PHImageContentMode를 .aspectFit으로 지정하면 targetSize에 맞게 이미지가 맞춰 들어갈 것이라고 생각 -> 이미지가 큰 경우 targetSize에 맞춰 crop됨...
+	- 시도 1: fullSize 이미지를 받아서 사이즈를 targetSize 비율에 맞춰 변경
+		- 배열로 넘어온 assets를 비동기로 받기 위해 DispatchGroup을 사용. 모든 assets를 image로 변경하고나면 global 큐에서 비디오를 생성하도록 구현
 
-```swift
-func requestImages(from assets: [PHAsset], targetSize: CGSize, _ completion: @escaping ([UIImage?]) -> (Void)) {
-    var downloadedImages: [UIImage?] = []
-    let myGroup = DispatchGroup()
-    assets.forEach { asset in
-        myGroup.enter()
-        self.imageManager.requestImageData(for: asset, options: nil, resultHandler: { (data, _, _, _) in
-            if let data = data, let fullImage = UIImage(data: data) {
-                let resizedImage = fullImage.resizedImage(fullImage.size.newSize(fitTo: targetSize))
-                downloadedImages.append(resizedImage)
-                myGroup.leave()
-            }
-        })
-    }
-    myGroup.notify(queue: .global()) {
-        completion(downloadedImages)
-    }
-}
-```
+	```swift
+	func requestImages(from assets: [PHAsset], targetSize: CGSize, _ completion: @escaping ([UIImage?]) -> (Void)) {
+	    var downloadedImages: [UIImage?] = []
+	    let myGroup = DispatchGroup()
+	    assets.forEach { asset in
+	        myGroup.enter()
+	        self.imageManager.requestImageData(for: asset, options: nil, resultHandler: { (data, _, _, _) in
+	            if let data = data, let fullImage = UIImage(data: data) {
+	                let resizedImage = fullImage.resizedImage(fullImage.size.newSize(fitTo: targetSize))
+	                downloadedImages.append(resizedImage)
+	                myGroup.leave()
+	            }
+	        })
+	    }
+	    myGroup.notify(queue: .global()) {
+	        completion(downloadedImages)
+	    }
+	}
+	```
+	- 시도 2: PHImageRequestOption의 resizeMode를 .exact로 설정해야 targetSize에 딱 맞춰서 이미지 생성 가능. 또, deliveryMode를 설정해주지 않으면 에러 남
+
+	```swift
+	let options = PHImageRequestOptions()
+    options.deliveryMode = .highQualityFormat
+    options.resizeMode = .exact
+	```
 
 - AVAssetWriter는 startWriting, startSession, finishWriting 시 사용
 - 실제로 미디어데이터를 쓰는 객체는 AVAssetWriterInput이다. (output 파일에 쓸 개별 track에 사용)

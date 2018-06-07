@@ -34,6 +34,11 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         doneButton.isEnabled = false
     }
 
+    @IBAction func addButtonClicked(_ sender: UIBarButtonItem) {
+        let doodleVC = DoodleCollectionViewController(collectionViewLayout: UICollectionViewLayout())
+        self.navigationController?.show(doodleVC, sender: nil)
+    }
+
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return photoService.count
     }

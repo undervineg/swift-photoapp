@@ -64,6 +64,11 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" id="cL1-zU-Z1I">
+                        <barButtonItem key="leftBarButtonItem" title="+" id="XA5-6s-8IV">
+                            <connections>
+                                <action selector="addButtonClicked:" destination="BYZ-38-t0r" id="P6m-E3-tfk"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Done" id="LU4-MR-Mpw">
                             <connections>
                                 <action selector="isDone:" destination="BYZ-38-t0r" id="aoX-4I-hDi"/>

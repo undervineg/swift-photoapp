@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		EE126FFE2091C81900DA7A37 /* DoodleCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE126FFD2091C81900DA7A37 /* DoodleCollectionViewController.swift */; };
+		EE32E51D20B1C77600A1ECB5 /* Doodles.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE32E51C20B1C77600A1ECB5 /* Doodles.swift */; };
+		EE32E52120B1C8C500A1ECB5 /* Thumbnail.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE32E52020B1C8C500A1ECB5 /* Thumbnail.swift */; };
+		EE32E52320B1CA9300A1ECB5 /* Downloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE32E52220B1CA9300A1ECB5 /* Downloader.swift */; };
 		EE4208C72084931700B7EC17 /* PhotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE4208C62084931700B7EC17 /* PhotoCell.swift */; };
 		EE4208C9208494DF00B7EC17 /* Reusable.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE4208C8208494DF00B7EC17 /* Reusable.swift */; };
 		EE4208CB20849FA000B7EC17 /* Photos.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE4208CA20849FA000B7EC17 /* Photos.swift */; };
@@ -25,6 +29,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		EE126FFD2091C81900DA7A37 /* DoodleCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoodleCollectionViewController.swift; sourceTree = "<group>"; };
+		EE32E51C20B1C77600A1ECB5 /* Doodles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Doodles.swift; sourceTree = "<group>"; };
+		EE32E52020B1C8C500A1ECB5 /* Thumbnail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Thumbnail.swift; sourceTree = "<group>"; };
+		EE32E52220B1CA9300A1ECB5 /* Downloader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Downloader.swift; sourceTree = "<group>"; };
 		EE4208C62084931700B7EC17 /* PhotoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCell.swift; sourceTree = "<group>"; };
 		EE4208C8208494DF00B7EC17 /* Reusable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reusable.swift; sourceTree = "<group>"; };
 		EE4208CA20849FA000B7EC17 /* Photos.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Photos.swift; sourceTree = "<group>"; };
@@ -55,6 +63,42 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		EE32E51B20B1C74E00A1ECB5 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				EED1C407207F31AD002C2C7B /* ViewController.swift */,
+				EE4208CC20849FAB00B7EC17 /* Model */,
+				EE4208CD20849FB000B7EC17 /* View */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		EE32E51E20B1C78300A1ECB5 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				EE32E51C20B1C77600A1ECB5 /* Doodles.swift */,
+				EE32E52020B1C8C500A1ECB5 /* Thumbnail.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		EE32E51F20B1C78900A1ECB5 /* DoodleViewController */ = {
+			isa = PBXGroup;
+			children = (
+				EE126FFD2091C81900DA7A37 /* DoodleCollectionViewController.swift */,
+				EE32E51E20B1C78300A1ECB5 /* Model */,
+			);
+			path = DoodleViewController;
+			sourceTree = "<group>";
+		};
+		EE32E52420B1CA9700A1ECB5 /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				EE32E52220B1CA9300A1ECB5 /* Downloader.swift */,
+			);
+			path = Helper;
+			sourceTree = "<group>";
+		};
 		EE4208CC20849FAB00B7EC17 /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -120,9 +164,9 @@
 			isa = PBXGroup;
 			children = (
 				EED1C405207F31AD002C2C7B /* AppDelegate.swift */,
-				EED1C407207F31AD002C2C7B /* ViewController.swift */,
-				EE4208CC20849FAB00B7EC17 /* Model */,
-				EE4208CD20849FB000B7EC17 /* View */,
+				EE32E51B20B1C74E00A1ECB5 /* ViewController */,
+				EE32E51F20B1C78900A1ECB5 /* DoodleViewController */,
+				EE32E52420B1CA9700A1ECB5 /* Helper */,
 				EE4208CE20849FB500B7EC17 /* Protocols */,
 				EE4208D12085873700B7EC17 /* Extensions */,
 				EE5B7381208641E400F89D83 /* Constants */,
@@ -213,10 +257,14 @@
 				EE4208D02085872600B7EC17 /* UIColor+Extension.swift in Sources */,
 				EE4208CB20849FA000B7EC17 /* Photos.swift in Sources */,
 				EE5B73802086414200F89D83 /* CollectionView+Config.swift in Sources */,
+				EE32E52120B1C8C500A1ECB5 /* Thumbnail.swift in Sources */,
+				EE32E51D20B1C77600A1ECB5 /* Doodles.swift in Sources */,
+				EE32E52320B1CA9300A1ECB5 /* Downloader.swift in Sources */,
 				EE4208C72084931700B7EC17 /* PhotoCell.swift in Sources */,
 				EE4208D72085EC1100B7EC17 /* ClassIterator.swift in Sources */,
 				EE4208D52085EBEF00B7EC17 /* PhotoService.swift in Sources */,
 				EE900651208B35DB00F9F4A4 /* VideoMaker.swift in Sources */,
+				EE126FFE2091C81900DA7A37 /* DoodleCollectionViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

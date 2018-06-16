@@ -7,49 +7,75 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		EE0C2D5020D5838F0028900D /* +UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE0C2D4F20D5838F0028900D /* +UIViewController.swift */; };
+		EE0C2D5220D5841D0028900D /* MediaType.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE0C2D5120D5841D0028900D /* MediaType.swift */; };
 		EE126FFE2091C81900DA7A37 /* DoodleCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE126FFD2091C81900DA7A37 /* DoodleCollectionViewController.swift */; };
-		EE32E51D20B1C77600A1ECB5 /* Doodles.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE32E51C20B1C77600A1ECB5 /* Doodles.swift */; };
-		EE32E52120B1C8C500A1ECB5 /* Thumbnail.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE32E52020B1C8C500A1ECB5 /* Thumbnail.swift */; };
-		EE32E52320B1CA9300A1ECB5 /* Downloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE32E52220B1CA9300A1ECB5 /* Downloader.swift */; };
-		EE4208C72084931700B7EC17 /* PhotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE4208C62084931700B7EC17 /* PhotoCell.swift */; };
+		EE32E51D20B1C77600A1ECB5 /* Doodle.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE32E51C20B1C77600A1ECB5 /* Doodle.swift */; };
+		EE4208C72084931700B7EC17 /* MainPhotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE4208C62084931700B7EC17 /* MainPhotoCell.swift */; };
 		EE4208C9208494DF00B7EC17 /* Reusable.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE4208C8208494DF00B7EC17 /* Reusable.swift */; };
 		EE4208CB20849FA000B7EC17 /* Photos.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE4208CA20849FA000B7EC17 /* Photos.swift */; };
-		EE4208D02085872600B7EC17 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE4208CF2085872600B7EC17 /* UIColor+Extension.swift */; };
+		EE4208D02085872600B7EC17 /* +UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE4208CF2085872600B7EC17 /* +UIColor.swift */; };
 		EE4208D52085EBEF00B7EC17 /* PhotoService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE4208D42085EBEF00B7EC17 /* PhotoService.swift */; };
-		EE4208D72085EC1100B7EC17 /* ClassIterator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE4208D62085EC1100B7EC17 /* ClassIterator.swift */; };
-		EE5B73802086414200F89D83 /* CollectionView+Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE5B737F2086414200F89D83 /* CollectionView+Config.swift */; };
+		EE4208D72085EC1100B7EC17 /* +Iterator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE4208D62085EC1100B7EC17 /* +Iterator.swift */; };
+		EE5B73802086414200F89D83 /* ViewConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE5B737F2086414200F89D83 /* ViewConfig.swift */; };
 		EE5CBC8B20872EAA00C63F2B /* NotificationName.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE5CBC8A20872EAA00C63F2B /* NotificationName.swift */; };
 		EE5CBC8D2087360B00C63F2B /* NotificationKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE5CBC8C2087360B00C63F2B /* NotificationKeys.swift */; };
 		EE900651208B35DB00F9F4A4 /* VideoMaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE900650208B35DB00F9F4A4 /* VideoMaker.swift */; };
 		EED1C406207F31AD002C2C7B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EED1C405207F31AD002C2C7B /* AppDelegate.swift */; };
-		EED1C408207F31AD002C2C7B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EED1C407207F31AD002C2C7B /* ViewController.swift */; };
+		EED1C408207F31AD002C2C7B /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EED1C407207F31AD002C2C7B /* MainViewController.swift */; };
 		EED1C40B207F31AD002C2C7B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EED1C409207F31AD002C2C7B /* Main.storyboard */; };
 		EED1C40D207F31AF002C2C7B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EED1C40C207F31AF002C2C7B /* Assets.xcassets */; };
 		EED1C410207F31AF002C2C7B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EED1C40E207F31AF002C2C7B /* LaunchScreen.storyboard */; };
+		EEFC051B20D3B3AC000B47D2 /* PhotoAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEFC051A20D3B3AC000B47D2 /* PhotoAppTests.swift */; };
+		EEFC052320D3B402000B47D2 /* NetworkModuleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEFC052220D3B402000B47D2 /* NetworkModuleTests.swift */; };
+		EEFC053920D3C35E000B47D2 /* GoogleService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEFC053820D3C35E000B47D2 /* GoogleService.swift */; };
+		EEFC053B20D3CCB3000B47D2 /* Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEFC053A20D3CCB3000B47D2 /* Networking.swift */; };
+		EEFC053D20D3CD0D000B47D2 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEFC053C20D3CD0D000B47D2 /* API.swift */; };
+		EEFC053F20D3CD2E000B47D2 /* GoogleAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEFC053E20D3CD2E000B47D2 /* GoogleAPI.swift */; };
+		EEFC054120D4FC04000B47D2 /* DoodleImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEFC054020D4FC04000B47D2 /* DoodleImageCell.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		EEFC051D20D3B3AC000B47D2 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EED1C3FA207F31AD002C2C7B /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = EED1C401207F31AD002C2C7B;
+			remoteInfo = PhotoApp;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
+		EE0C2D4F20D5838F0028900D /* +UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "+UIViewController.swift"; sourceTree = "<group>"; };
+		EE0C2D5120D5841D0028900D /* MediaType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaType.swift; sourceTree = "<group>"; };
 		EE126FFD2091C81900DA7A37 /* DoodleCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoodleCollectionViewController.swift; sourceTree = "<group>"; };
-		EE32E51C20B1C77600A1ECB5 /* Doodles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Doodles.swift; sourceTree = "<group>"; };
-		EE32E52020B1C8C500A1ECB5 /* Thumbnail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Thumbnail.swift; sourceTree = "<group>"; };
-		EE32E52220B1CA9300A1ECB5 /* Downloader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Downloader.swift; sourceTree = "<group>"; };
-		EE4208C62084931700B7EC17 /* PhotoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCell.swift; sourceTree = "<group>"; };
+		EE32E51C20B1C77600A1ECB5 /* Doodle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Doodle.swift; sourceTree = "<group>"; };
+		EE4208C62084931700B7EC17 /* MainPhotoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPhotoCell.swift; sourceTree = "<group>"; };
 		EE4208C8208494DF00B7EC17 /* Reusable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reusable.swift; sourceTree = "<group>"; };
 		EE4208CA20849FA000B7EC17 /* Photos.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Photos.swift; sourceTree = "<group>"; };
-		EE4208CF2085872600B7EC17 /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
+		EE4208CF2085872600B7EC17 /* +UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "+UIColor.swift"; sourceTree = "<group>"; };
 		EE4208D42085EBEF00B7EC17 /* PhotoService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoService.swift; sourceTree = "<group>"; };
-		EE4208D62085EC1100B7EC17 /* ClassIterator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassIterator.swift; sourceTree = "<group>"; };
-		EE5B737F2086414200F89D83 /* CollectionView+Config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CollectionView+Config.swift"; sourceTree = "<group>"; };
+		EE4208D62085EC1100B7EC17 /* +Iterator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "+Iterator.swift"; sourceTree = "<group>"; };
+		EE5B737F2086414200F89D83 /* ViewConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewConfig.swift; sourceTree = "<group>"; };
 		EE5CBC8A20872EAA00C63F2B /* NotificationName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationName.swift; sourceTree = "<group>"; };
 		EE5CBC8C2087360B00C63F2B /* NotificationKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationKeys.swift; sourceTree = "<group>"; };
 		EE900650208B35DB00F9F4A4 /* VideoMaker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoMaker.swift; sourceTree = "<group>"; };
 		EED1C402207F31AD002C2C7B /* PhotoApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PhotoApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EED1C405207F31AD002C2C7B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		EED1C407207F31AD002C2C7B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		EED1C407207F31AD002C2C7B /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		EED1C40A207F31AD002C2C7B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		EED1C40C207F31AF002C2C7B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EED1C40F207F31AF002C2C7B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		EED1C411207F31AF002C2C7B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EEFC051820D3B3AC000B47D2 /* PhotoAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PhotoAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		EEFC051A20D3B3AC000B47D2 /* PhotoAppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoAppTests.swift; sourceTree = "<group>"; };
+		EEFC051C20D3B3AC000B47D2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EEFC052220D3B402000B47D2 /* NetworkModuleTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkModuleTests.swift; sourceTree = "<group>"; };
+		EEFC053820D3C35E000B47D2 /* GoogleService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleService.swift; sourceTree = "<group>"; };
+		EEFC053A20D3CCB3000B47D2 /* Networking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Networking.swift; sourceTree = "<group>"; };
+		EEFC053C20D3CD0D000B47D2 /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
+		EEFC053E20D3CD2E000B47D2 /* GoogleAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleAPI.swift; sourceTree = "<group>"; };
+		EEFC054020D4FC04000B47D2 /* DoodleImageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoodleImageCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,51 +86,39 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		EEFC051520D3B3AC000B47D2 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		EE32E51B20B1C74E00A1ECB5 /* ViewController */ = {
+		EE32E51B20B1C74E00A1ECB5 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				EED1C407207F31AD002C2C7B /* ViewController.swift */,
-				EE4208CC20849FAB00B7EC17 /* Model */,
-				EE4208CD20849FB000B7EC17 /* View */,
-			);
-			path = ViewController;
-			sourceTree = "<group>";
-		};
-		EE32E51E20B1C78300A1ECB5 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				EE32E51C20B1C77600A1ECB5 /* Doodles.swift */,
-				EE32E52020B1C8C500A1ECB5 /* Thumbnail.swift */,
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
-		EE32E51F20B1C78900A1ECB5 /* DoodleViewController */ = {
-			isa = PBXGroup;
-			children = (
+				EED1C407207F31AD002C2C7B /* MainViewController.swift */,
 				EE126FFD2091C81900DA7A37 /* DoodleCollectionViewController.swift */,
-				EE32E51E20B1C78300A1ECB5 /* Model */,
 			);
-			path = DoodleViewController;
+			path = Controller;
 			sourceTree = "<group>";
 		};
-		EE32E52420B1CA9700A1ECB5 /* Helper */ = {
+		EE32E52420B1CA9700A1ECB5 /* Network */ = {
 			isa = PBXGroup;
 			children = (
-				EE32E52220B1CA9300A1ECB5 /* Downloader.swift */,
+				EEFC053C20D3CD0D000B47D2 /* API.swift */,
+				EEFC053A20D3CCB3000B47D2 /* Networking.swift */,
 			);
-			path = Helper;
+			path = Network;
 			sourceTree = "<group>";
 		};
 		EE4208CC20849FAB00B7EC17 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				EE4208D42085EBEF00B7EC17 /* PhotoService.swift */,
-				EE900650208B35DB00F9F4A4 /* VideoMaker.swift */,
 				EE4208CA20849FA000B7EC17 /* Photos.swift */,
+				EE32E51C20B1C77600A1ECB5 /* Doodle.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -112,7 +126,8 @@
 		EE4208CD20849FB000B7EC17 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				EE4208C62084931700B7EC17 /* PhotoCell.swift */,
+				EE4208C62084931700B7EC17 /* MainPhotoCell.swift */,
+				EEFC054020D4FC04000B47D2 /* DoodleImageCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -129,8 +144,9 @@
 		EE4208D12085873700B7EC17 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				EE4208CF2085872600B7EC17 /* UIColor+Extension.swift */,
-				EE4208D62085EC1100B7EC17 /* ClassIterator.swift */,
+				EE4208CF2085872600B7EC17 /* +UIColor.swift */,
+				EE0C2D4F20D5838F0028900D /* +UIViewController.swift */,
+				EE4208D62085EC1100B7EC17 /* +Iterator.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -138,7 +154,8 @@
 		EE5B7381208641E400F89D83 /* Constants */ = {
 			isa = PBXGroup;
 			children = (
-				EE5B737F2086414200F89D83 /* CollectionView+Config.swift */,
+				EE5B737F2086414200F89D83 /* ViewConfig.swift */,
+				EE0C2D5120D5841D0028900D /* MediaType.swift */,
 				EE5CBC8C2087360B00C63F2B /* NotificationKeys.swift */,
 			);
 			path = Constants;
@@ -148,6 +165,7 @@
 			isa = PBXGroup;
 			children = (
 				EED1C404207F31AD002C2C7B /* PhotoApp */,
+				EEFC051920D3B3AC000B47D2 /* PhotoAppTests */,
 				EED1C403207F31AD002C2C7B /* Products */,
 			);
 			sourceTree = "<group>";
@@ -156,6 +174,7 @@
 			isa = PBXGroup;
 			children = (
 				EED1C402207F31AD002C2C7B /* PhotoApp.app */,
+				EEFC051820D3B3AC000B47D2 /* PhotoAppTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -164,9 +183,11 @@
 			isa = PBXGroup;
 			children = (
 				EED1C405207F31AD002C2C7B /* AppDelegate.swift */,
-				EE32E51B20B1C74E00A1ECB5 /* ViewController */,
-				EE32E51F20B1C78900A1ECB5 /* DoodleViewController */,
-				EE32E52420B1CA9700A1ECB5 /* Helper */,
+				EE32E51B20B1C74E00A1ECB5 /* Controller */,
+				EE4208CD20849FB000B7EC17 /* View */,
+				EE4208CC20849FAB00B7EC17 /* Model */,
+				EEFC054320D4FEBA000B47D2 /* Service */,
+				EE32E52420B1CA9700A1ECB5 /* Network */,
 				EE4208CE20849FB500B7EC17 /* Protocols */,
 				EE4208D12085873700B7EC17 /* Extensions */,
 				EE5B7381208641E400F89D83 /* Constants */,
@@ -176,6 +197,27 @@
 				EED1C411207F31AF002C2C7B /* Info.plist */,
 			);
 			path = PhotoApp;
+			sourceTree = "<group>";
+		};
+		EEFC051920D3B3AC000B47D2 /* PhotoAppTests */ = {
+			isa = PBXGroup;
+			children = (
+				EEFC051A20D3B3AC000B47D2 /* PhotoAppTests.swift */,
+				EEFC052220D3B402000B47D2 /* NetworkModuleTests.swift */,
+				EEFC051C20D3B3AC000B47D2 /* Info.plist */,
+			);
+			path = PhotoAppTests;
+			sourceTree = "<group>";
+		};
+		EEFC054320D4FEBA000B47D2 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				EE4208D42085EBEF00B7EC17 /* PhotoService.swift */,
+				EE900650208B35DB00F9F4A4 /* VideoMaker.swift */,
+				EEFC053820D3C35E000B47D2 /* GoogleService.swift */,
+				EEFC053E20D3CD2E000B47D2 /* GoogleAPI.swift */,
+			);
+			path = Service;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -198,18 +240,40 @@
 			productReference = EED1C402207F31AD002C2C7B /* PhotoApp.app */;
 			productType = "com.apple.product-type.application";
 		};
+		EEFC051720D3B3AC000B47D2 /* PhotoAppTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EEFC051F20D3B3AC000B47D2 /* Build configuration list for PBXNativeTarget "PhotoAppTests" */;
+			buildPhases = (
+				EEFC051420D3B3AC000B47D2 /* Sources */,
+				EEFC051520D3B3AC000B47D2 /* Frameworks */,
+				EEFC051620D3B3AC000B47D2 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				EEFC051E20D3B3AC000B47D2 /* PBXTargetDependency */,
+			);
+			name = PhotoAppTests;
+			productName = PhotoAppTests;
+			productReference = EEFC051820D3B3AC000B47D2 /* PhotoAppTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
 		EED1C3FA207F31AD002C2C7B /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0930;
+				LastSwiftUpdateCheck = 0940;
 				LastUpgradeCheck = 0930;
 				ORGANIZATIONNAME = "심 승민";
 				TargetAttributes = {
 					EED1C401207F31AD002C2C7B = {
 						CreatedOnToolsVersion = 9.3;
+					};
+					EEFC051720D3B3AC000B47D2 = {
+						CreatedOnToolsVersion = 9.4;
+						TestTargetID = EED1C401207F31AD002C2C7B;
 					};
 				};
 			};
@@ -227,6 +291,7 @@
 			projectRoot = "";
 			targets = (
 				EED1C401207F31AD002C2C7B /* PhotoApp */,
+				EEFC051720D3B3AC000B47D2 /* PhotoAppTests */,
 			);
 		};
 /* End PBXProject section */
@@ -242,6 +307,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		EEFC051620D3B3AC000B47D2 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -251,24 +323,46 @@
 			files = (
 				EE5CBC8D2087360B00C63F2B /* NotificationKeys.swift in Sources */,
 				EE5CBC8B20872EAA00C63F2B /* NotificationName.swift in Sources */,
+				EEFC053B20D3CCB3000B47D2 /* Networking.swift in Sources */,
 				EE4208C9208494DF00B7EC17 /* Reusable.swift in Sources */,
-				EED1C408207F31AD002C2C7B /* ViewController.swift in Sources */,
+				EED1C408207F31AD002C2C7B /* MainViewController.swift in Sources */,
 				EED1C406207F31AD002C2C7B /* AppDelegate.swift in Sources */,
-				EE4208D02085872600B7EC17 /* UIColor+Extension.swift in Sources */,
+				EE0C2D5220D5841D0028900D /* MediaType.swift in Sources */,
+				EE4208D02085872600B7EC17 /* +UIColor.swift in Sources */,
 				EE4208CB20849FA000B7EC17 /* Photos.swift in Sources */,
-				EE5B73802086414200F89D83 /* CollectionView+Config.swift in Sources */,
-				EE32E52120B1C8C500A1ECB5 /* Thumbnail.swift in Sources */,
-				EE32E51D20B1C77600A1ECB5 /* Doodles.swift in Sources */,
-				EE32E52320B1CA9300A1ECB5 /* Downloader.swift in Sources */,
-				EE4208C72084931700B7EC17 /* PhotoCell.swift in Sources */,
-				EE4208D72085EC1100B7EC17 /* ClassIterator.swift in Sources */,
+				EE5B73802086414200F89D83 /* ViewConfig.swift in Sources */,
+				EEFC054120D4FC04000B47D2 /* DoodleImageCell.swift in Sources */,
+				EE32E51D20B1C77600A1ECB5 /* Doodle.swift in Sources */,
+				EE4208C72084931700B7EC17 /* MainPhotoCell.swift in Sources */,
+				EEFC053920D3C35E000B47D2 /* GoogleService.swift in Sources */,
+				EEFC053F20D3CD2E000B47D2 /* GoogleAPI.swift in Sources */,
+				EE4208D72085EC1100B7EC17 /* +Iterator.swift in Sources */,
 				EE4208D52085EBEF00B7EC17 /* PhotoService.swift in Sources */,
 				EE900651208B35DB00F9F4A4 /* VideoMaker.swift in Sources */,
+				EEFC053D20D3CD0D000B47D2 /* API.swift in Sources */,
+				EE0C2D5020D5838F0028900D /* +UIViewController.swift in Sources */,
 				EE126FFE2091C81900DA7A37 /* DoodleCollectionViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		EEFC051420D3B3AC000B47D2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EEFC052320D3B402000B47D2 /* NetworkModuleTests.swift in Sources */,
+				EEFC051B20D3B3AC000B47D2 /* PhotoAppTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		EEFC051E20D3B3AC000B47D2 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = EED1C401207F31AD002C2C7B /* PhotoApp */;
+			targetProxy = EEFC051D20D3B3AC000B47D2 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		EED1C409207F31AD002C2C7B /* Main.storyboard */ = {
@@ -440,6 +534,48 @@
 			};
 			name = Release;
 		};
+		EEFC052020D3B3AC000B47D2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = B3PWYBKFUK;
+				INFOPLIST_FILE = PhotoAppTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = undervineg.ios.school.PhotoAppTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PhotoApp.app/PhotoApp";
+			};
+			name = Debug;
+		};
+		EEFC052120D3B3AC000B47D2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = B3PWYBKFUK;
+				INFOPLIST_FILE = PhotoAppTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = undervineg.ios.school.PhotoAppTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PhotoApp.app/PhotoApp";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -457,6 +593,15 @@
 			buildConfigurations = (
 				EED1C415207F31AF002C2C7B /* Debug */,
 				EED1C416207F31AF002C2C7B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		EEFC051F20D3B3AC000B47D2 /* Build configuration list for PBXNativeTarget "PhotoAppTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EEFC052020D3B3AC000B47D2 /* Debug */,
+				EEFC052120D3B3AC000B47D2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

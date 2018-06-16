@@ -333,3 +333,27 @@ context?.draw(image, in: CGRect(x: 0, y: yCenter, width: image.width, height: im
 2018-04-24 (작업시간: 2일)
 
 <br/>
+
+
+## 다운받은 이미지 저장하기 feat. GCD 작업 스케줄링
+<img src="img/step4_1.png" width="45%"></img>
+<img src="img/step4_2.png" width="45%"></img>
+<img src="img/step4_3.png" width="45%"></img>
+<img src="img/step4_4.png" width="45%"></img>
+
+### 서버에서 받은 데이터 처리
+
+
+### 셀 롱터치 시 메뉴 컨트롤러(Save) 표시
+
+
+### Save한 이미지 저장 및 바로 업데이트 표시
+
+
+### 학습 내용
+>- **[동시성 프로그래밍]()**
+>- **[메인쓰레드에서 처리해야 하는 동작]()**
+>- **[GCD 이벤트 소스(Event Source)]()**
+>- **[UIMenuController 동작 방식]()**
+
+<br/>
